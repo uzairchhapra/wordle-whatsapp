@@ -34,8 +34,8 @@ def get_wordle_answer():
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-        driver = webdriver.Chrome(
-        executable_path="C:/Users/uzair/Chrome Driver/chromedriver_win32/chromedriver")
+        # driver = webdriver.Chrome(
+        # executable_path="C:/Users/uzair/Chrome Driver/chromedriver_win32/chromedriver")
         driver.get('https://www.powerlanguage.co.uk/wordle/')
         
         data = json.loads(driver.execute_script("return localStorage.getItem('gameState')"))
