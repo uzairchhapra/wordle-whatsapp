@@ -1,1 +1,2 @@
 # wordle-whatsapp
+Deploy
