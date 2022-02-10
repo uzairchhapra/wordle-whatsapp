@@ -9,6 +9,7 @@ import json
 
 load_dotenv()
 
+store=['humor']
 app = Flask(__name__)
 client = Client()
 
@@ -40,6 +41,10 @@ def get_wordle_answer():
         
         data = json.loads(driver.execute_script("return localStorage.getItem('gameState')"))
         ans = data['solution']
-        return respond(f"Today's Wordle Answer👀: {ans}")
+        if store[-1]!=ans:
+            store.append(ans)
+            if len(store)==3:
+                store.pop(0)
+        return respond(f"Today's Wordle Answer could either be *{store[1]}* or *{store[0]}* depending on your current timezone🙈. Countries such as India, KSA, UAE might have to wait for a few hours after 12 midnight to get the correct answer. This chatbot has been developed primarily for US residents.")
     else:
         return respond(f"Wordle ka answer chahiye toh maango, warna jaao.😒")
