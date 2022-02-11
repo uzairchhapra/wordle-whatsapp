@@ -9,7 +9,7 @@ import json
 
 load_dotenv()
 
-store=['humor']
+store=['pause']
 app = Flask(__name__)
 client = Client()
 
@@ -37,9 +37,9 @@ def get_wordle_answer():
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
         # driver = webdriver.Chrome(
         # executable_path="C:/Users/uzair/Chrome Driver/chromedriver_win32/chromedriver")
-        driver.get('https://www.powerlanguage.co.uk/wordle/')
+        driver.get('https://www.nytimes.com/games/wordle/index.html')
         
-        data = json.loads(driver.execute_script("return localStorage.getItem('gameState')"))
+        data = json.loads(driver.execute_script("return localStorage.getItem('nyt-wordle-state')"))
         ans = data['solution']
         if store[-1]!=ans:
             store.append(ans)
